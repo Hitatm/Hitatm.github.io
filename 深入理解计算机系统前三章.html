@@ -1103,4 +1103,136 @@ MathJax.Hub.Config({
   showProcessingMessages: false
 });
 </script>
-<title>深入理解计算机系统前三章</title></head><body><article class="markdown-body"><p>;</p></article></body></html>
+<title>深入理解计算机系统前三章</title></head><body><article class="markdown-body"><p><strong>目录</strong></p>
+<div class="toc">
+<ul>
+<li><a href="#_1">第一章、深入理解计算机系统</a><ul>
+<li><a href="#helloc">Hello.c的存储</a></li>
+<li><a href="#helloc_1">Hello.c的编译过程</a></li>
+<li><a href="#hello">hello的运行(未完成)</a></li>
+</ul>
+</li>
+<li><a href="#_2">第二章、信息的表示和处理</a><ul>
+<li><a href="#_3">信息的表示、整数的表示、运算</a></li>
+</ul>
+</li>
+<li><a href="#_4">第三章、程序的机器级表示</a></li>
+</ul>
+</div>
+<h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第一章、深入理解计算机系统</h1>
+<h2 id="helloc"><a name="user-content-helloc" href="#helloc" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Hello.c的存储</h2>
+<ul>
+<li>系统中所有的信息-包括磁盘文件、存储器中的程序、存储器中放的用户数据以及网络上传输的数据都是由一串比特表示的。因此写一个helloworld程序的c文件的所有字符都是ascii存储的，包括所有的空格、回车、以及tab。</li>
+</ul>
+<h2 id="helloc_1"><a name="user-content-helloc_1" href="#helloc_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Hello.c的编译过程</h2>
+<ul>
+<li>hello world的执行、编译的过程  （gcc -o hello hello.c） <ul>
+<li>预处理（cpp预处理器）根据以#开头的命令修改原始的c程序 例如#include<stdio.h> 将会读取系统头文件中的stdio.h并直接插入到程序文本中。生成.i文件</li>
+<li>编译 （ccl编译器）将程序文件翻译成汇编语言程序。生成.s 文件</li>
+<li>汇编  （as汇编器）将汇编代码翻译成机器指令，把这些指令打包成为一种 可重定位目标程序的格式 。生成.o文件</li>
+<li>链接 （ld链接器）hello程序中调用了printf函数，printf函数存在于一个单独的printf.o 目标文件中；链接器负责把hello.o和printf.o 合并到一起。生成hello文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="hello"><a name="user-content-hello" href="#hello" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>hello的运行(未完成)</h2>
+<ul>
+<li>线程：每个线程都运行在进程的上下文中，并共享同样的代码和全局数据。线程之间的切换比进程更有优势，因为线程之间更容易共享数据，所以线程一般比进程更高效。</li>
+<li>
+<p>内存分布情况</p>
+<table>
+<thead>
+<tr>
+<th><strong>内存分布</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内核虚拟存储器   （Linux最上边的1/4的地址空间预留给操作系统中的代码和数据 <a href="#">第10章介绍</a></td>
+</tr>
+<tr>
+<td>用户栈（运行时创建；编译器用来实现函数调用）<a href="#">第3章</a></td>
+</tr>
+<tr>
+<td>&hellip;</td>
+</tr>
+<tr>
+<td>共享库的存储区域（存放像c标准库和数学库这样的共享库代码和数据的区域）<a href="#">第7章介绍</a></td>
+</tr>
+<tr>
+<td>&hellip;</td>
+</tr>
+<tr>
+<td>运行时堆 （malloc创建）<a href="#">第10章介绍</a></td>
+</tr>
+<tr>
+<td>读写数据        (从hello文件中加载进来的)</td>
+</tr>
+<tr>
+<td>只读的代码和数据(从hello文件中加载进来的)</td>
+</tr>
+<tr>
+<td>未用</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<hr />
+<h1 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第二章、信息的表示和处理</h1>
+<h2 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>信息的表示、整数的表示、运算</h2>
+<ol>
+<li>bit——位的概念；进制的转换；字的概念；</li>
+<li>寻址和字节顺序问题，争端的“端git”原来是 “争的是大端和小端”  o(∩_∩)o </li>
+<li>为什么C字符串没有大端小端的问题，因为大小端是针对一个数据类型内部来说的，char型字符一般只有1个字节所以也就无大小端的问题了，但是<strong>Java中是使用Unicode（统一字符编码标准）来表示字符串，使用Java字符流解析过程中如果有什么问题或许需要考虑下这个问题</strong>。</li>
+<li>近世代数中环的概念是布尔代数的数学基础。</li>
+<li>
+<p>展示下异或“^” 环的牛逼用处</p>
+<ul>
+<li>首先“^”的特点：<ul>
+<li><strong>a ⊕ a = 0</strong></li>
+<li>a ⊕ b = b ⊕ a      交换律</li>
+<li><strong>a ⊕b ⊕ c = a ⊕ (b ⊕ c) = (a ⊕ b) ⊕ c; 结合律</strong></li>
+<li><strong>d = a ⊕ b ⊕ c 可以推出 a = d ⊕ b ⊕ c.</strong></li>
+<li><strong>a ⊕ b ⊕ a = b. 牛逼之处</strong></li>
+</ul>
+</li>
+<li>然后来段代码 使用“^”的奇技淫巧<br />
+<div class="codehilite"><pre>        <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">x</span> <span class="p">,</span><span class="kt">int</span> <span class="o">*</span><span class="n">y</span> <span class="p">)</span>
+        <span class="p">{</span>
+            <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">^</span> <span class="o">*</span><span class="n">y</span>  <span class="p">;</span><span class="c1">// x=x^y</span>
+            <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">^</span> <span class="o">*</span><span class="n">y</span>  <span class="p">;</span><span class="c1">// y=x^y^y       =&gt; x</span>
+            <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">^</span> <span class="o">*</span><span class="n">y</span>  <span class="p">;</span>
+            <span class="c1">// x=x^y ^ x^y^y =&gt; y</span>
+        <span class="p">}</span>  
+</pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>c语言中的“&gt;&gt; and &lt;&lt;” 移位运算从左到右结合，所以 <strong>x&lt;&lt;j&lt;&lt;k == (x&lt;&lt;j)&lt;&lt;k</strong>;</p>
+</li>
+<li>注意强制类型转换时候发生的<strong>截断</strong>情况;<br />
+     由于c语言的强制类型转化产生程序员<code>无法预测的错误</code>，慎重使用！<br />
+<div class="codehilite"><pre>     <span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">21341234</span><span class="p">;</span> 
+     <span class="kt">short</span> <span class="n">sx</span> <span class="o">=</span><span class="p">(</span><span class="kt">short</span><span class="p">)</span><span class="n">x</span><span class="p">;</span>
+</pre></div>
+</li>
+<li>位运算小技巧 <ul>
+<li>x*7 =(x&lt;&lt;3) -x   ;</li>
+<li>-x = ~x+1        ;</li>
+<li>0xFF = (1&lt;&lt;8)-1  ;</li>
+</ul>
+</li>
+<li>NOTICE ! 必须十分小心的使用浮点数，因为浮点数的运算范围和精度有限，而且浮点数<strong>不一定遵循普遍的运算律</strong>，比如结合律。</li>
+</ol>
+<hr />
+<h1 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第三章、程序的机器级表示</h1>
+<p>本章能够解答的问题：</p>
+<ul>
+<li>如何用c编译器生成IA32汇编语言。</li>
+<li>不同的控制结构生成的基本指令模式。例如条件、循环、开关语句</li>
+<li>栈的分配、寄存器的使用、参数传递。</li>
+<li>不同数据结构，如结构体、联合、数组的分配和访问方式。</li>
+<li>指针的使用。</li>
+</ul>
+<p><meta http-equiv="refresh" content="1"></p></article></body></html>
