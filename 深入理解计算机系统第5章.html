@@ -1103,291 +1103,50 @@ MathJax.Hub.Config({
   showProcessingMessages: false
 });
 </script>
-<title>深入理解计算机系统前三章</title></head><body><article class="markdown-body"><p><strong>目录</strong></p>
+<title>深入理解计算机系统第5章</title></head><body><article class="markdown-body"><p><strong>目录</strong></p>
 <div class="toc">
 <ul>
-<li><a href="#_1">第一章、深入理解计算机系统</a><ul>
-<li><a href="#helloc">Hello.c的存储</a></li>
-<li><a href="#helloc_1">Hello.c的编译过程</a></li>
-<li><a href="#hello">hello的运行(未完成)</a></li>
-</ul>
-</li>
-<li><a href="#_2">第二章、信息的表示和处理</a><ul>
-<li><a href="#_3">信息的表示、整数的表示、运算</a></li>
-</ul>
-</li>
-<li><a href="#_4">第三章、程序的机器级表示</a></li>
-<li><a href="#intel">Intel 系列处理器的发展</a></li>
-<li><a href="#gcc">gcc编译选项</a></li>
-<li><a href="#c">C语言循环语句的汇编级实现</a></li>
-<li><a href="#_5">过程调用</a></li>
-<li><a href="#_6">嵌套数据类型</a><ul>
-<li><a href="#_7">数组</a></li>
-<li><a href="#_8">异类数据结构</a></li>
-<li><a href="#alignment">关于对齐 alignment</a></li>
-<li><a href="#_9">关于指针</a></li>
-</ul>
-</li>
+<li><a href="#_1">第五章、优化程序性能(略读)</a></li>
+<li><a href="#_2">第六章、优化程序性能(略读)</a></li>
+<li><a href="#_3">第七章、</a></li>
 </ul>
 </div>
-<h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第一章、深入理解计算机系统</h1>
-<h2 id="helloc"><a name="user-content-helloc" href="#helloc" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Hello.c的存储</h2>
-<ul>
-<li>系统中所有的信息-包括磁盘文件、存储器中的程序、存储器中放的用户数据以及网络上传输的数据都是由一串比特表示的。因此写一个helloworld程序的c文件的所有字符都是ascii存储的，包括所有的空格、回车、以及tab。</li>
-</ul>
-<h2 id="helloc_1"><a name="user-content-helloc_1" href="#helloc_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Hello.c的编译过程</h2>
-<p><a href="http://blog.sciencenet.cn/blog-588243-638056.html">这个过程更详细</a><br />
-<img alt="tupian" src="http://img1.51cto.com/attachment/201309/224935190.jpg" /><br />
-* hello world的执行、编译的过程  （gcc -o hello hello.c） <br />
-    * 预处理（cpp预处理器）根据以#开头的命令修改原始的c程序 例如#include<stdio.h> 将会读取系统头文件中的stdio.h并直接插入到程序文本中。生成.i文件<br />
-    * 编译 （ccl编译器）将程序文件翻译成汇编语言程序。生成.s 文件<br />
-    * 汇编  （as汇编器）将汇编代码翻译成机器指令，把这些指令打包成为一种 可重定位目标程序的格式 。生成.o文件<br />
-    * 链接 （ld链接器）hello程序中调用了printf函数，printf函数存在于一个单独的printf.o 目标文件中；链接器负责把hello.o和printf.o 合并到一起。生成hello文件</p>
-<h2 id="hello"><a name="user-content-hello" href="#hello" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>hello的运行(未完成)</h2>
-<ul>
-<li>线程：每个线程都运行在进程的上下文中，并共享同样的代码和全局数据。线程之间的切换比进程更有优势，因为线程之间更容易共享数据，所以线程一般比进程更高效。</li>
-<li>
-<p>内存分布情况</p>
-<table>
-<thead>
-<tr>
-<th><strong>内存分布</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>内核虚拟存储器   （Linux最上边的1/4的地址空间预留给操作系统中的代码和数据 <a href="#">第10章介绍</a></td>
-</tr>
-<tr>
-<td>用户栈（运行时创建；编译器用来实现函数调用）<a href="#">第3章</a></td>
-</tr>
-<tr>
-<td>&hellip;</td>
-</tr>
-<tr>
-<td>共享库的存储区域（存放像c标准库和数学库这样的共享库代码和数据的区域）<a href="#">第7章介绍</a></td>
-</tr>
-<tr>
-<td>&hellip;</td>
-</tr>
-<tr>
-<td>运行时堆 （malloc创建）<a href="#">第10章介绍</a></td>
-</tr>
-<tr>
-<td>读写数据        (从hello文件中加载进来的)</td>
-</tr>
-<tr>
-<td>只读的代码和数据(从hello文件中加载进来的)</td>
-</tr>
-<tr>
-<td>未用</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ul>
-<hr />
-<ul>
-<li>一个程序执行过程 来自<a href="http://tech.meituan.com/linker.html">这里</a><br />
-<img alt="一个程序执行过程" src="http://tech.meituan.com/img/linker/1.jpg" /></li>
-</ul>
-<hr />
-<h1 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第二章、信息的表示和处理</h1>
-<h2 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>信息的表示、整数的表示、运算</h2>
+<h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第五章、优化程序性能(略读)</h1>
 <ol>
-<li>bit——位的概念；进制的转换；字的概念；</li>
-<li>寻址和字节顺序问题，争端的“端git”原来是 “争的是大端和小端”  o(∩_∩)o </li>
-<li>为什么C字符串没有大端小端的问题，因为大小端是针对一个数据类型内部来说的，char型字符一般只有1个字节所以也就无大小端的问题了，但是<strong>Java中是使用Unicode（统一字符编码标准）来表示字符串，使用Java字符流解析过程中如果有什么问题或许需要考虑下这个问题</strong>。</li>
-<li>近世代数中环的概念是布尔代数的数学基础。</li>
-<li>
-<p>展示下异或“^” 环的牛逼用处</p>
-<ul>
-<li>首先“^”的特点：<ul>
-<li><strong>a ⊕ a = 0</strong></li>
-<li>a ⊕ b = b ⊕ a      交换律</li>
-<li><strong>a ⊕b ⊕ c = a ⊕ (b ⊕ c) = (a ⊕ b) ⊕ c; 结合律</strong></li>
-<li><strong>d = a ⊕ b ⊕ c 可以推出 a = d ⊕ b ⊕ c.</strong></li>
-<li><strong>a ⊕ b ⊕ a = b. 牛逼之处</strong></li>
-</ul>
-</li>
-<li>然后来段代码 使用“^”的奇技淫巧<br />
-<div class="codehilite"><pre>        <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">x</span> <span class="p">,</span><span class="kt">int</span> <span class="o">*</span><span class="n">y</span> <span class="p">)</span>
-        <span class="p">{</span>
-            <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">^</span> <span class="o">*</span><span class="n">y</span>  <span class="p">;</span><span class="c1">// x=x^y</span>
-            <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">^</span> <span class="o">*</span><span class="n">y</span>  <span class="p">;</span><span class="c1">// y=x^y^y       =&gt; x</span>
-            <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">^</span> <span class="o">*</span><span class="n">y</span>  <span class="p">;</span>
-            <span class="c1">// x=x^y ^ x^y^y =&gt; y</span>
-        <span class="p">}</span>  
+<li>减少过程调用<br />
+看上去无关紧要的过程调用再循环次数比较多的时候将会成为性能瓶颈。<br />
+<div class="codehilite"><pre>    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">strlen</span><span class="p">(</span><span class="n">ss</span><span class="p">);</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="o">-------------------------</span>
+    <span class="n">and</span>
+    <span class="n">len</span><span class="o">=</span><span class="n">strlen</span><span class="p">(</span><span class="n">ss</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">len</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="o">-------------------------</span>
 </pre></div>
 </li>
-</ul>
+<li>消除循环中的低效率，每次循环中没有改变的语句要放在循环之外  </li>
+<li>消除不必要的存储器引用，例如 *dest+=5;<blockquote>
+<p><strong>关于编译器优化问题可以参考Muchnick的著作，这貌似是传说中最全面的</strong><br />
+<strong>也可以参考Wadleigh 和 Crawford的关于软件优化的著作。</strong></p>
+</blockquote>
 </li>
-<li>
-<p>c语言中的“&gt;&gt; and &lt;&lt;” 移位运算从左到右结合，所以 <strong>x&lt;&lt;j&lt;&lt;k == (x&lt;&lt;j)&lt;&lt;k</strong>;</p>
-</li>
-<li>注意强制类型转换时候发生的<strong>截断</strong>情况;<br />
-     由于c语言的强制类型转化产生程序员<code>无法预测的错误</code>，慎重使用！<br />
-<div class="codehilite"><pre>     <span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">21341234</span><span class="p">;</span> 
-     <span class="kt">short</span> <span class="n">sx</span> <span class="o">=</span><span class="p">(</span><span class="kt">short</span><span class="p">)</span><span class="n">x</span><span class="p">;</span>
-</pre></div>
-</li>
-<li>位运算小技巧 <ul>
-<li>x*7 =(x&lt;&lt;3) -x   ;</li>
-<li>-x = ~x+1        ;</li>
-<li>0xFF = (1&lt;&lt;8)-1  ;</li>
-</ul>
-</li>
-<li>NOTICE ! 必须十分小心的使用浮点数，因为浮点数的运算范围和精度有限，而且浮点数<strong>不一定遵循普遍的运算律</strong>，比如结合律。</li>
 </ol>
 <hr />
-<h1 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第三章、程序的机器级表示</h1>
-<blockquote>
-<p>本章能够解答的问题：</p>
-</blockquote>
+<h1 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第六章、优化程序性能(略读)</h1>
+<p>RAM Random-access memory 随机访问存储器 分为两类动态的和静态的。 SRAM6晶体管速度快抗干扰能力强，无需刷新，DRMA抗干扰不行，易失需要定时刷新。</p>
+<h1 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第七章、</h1>
 <ul>
-<li>如何用c编译器生成IA32汇编语言。</li>
-<li>不同的控制结构生成的基本指令模式。例如条件、循环、开关语句</li>
-<li>栈的分配、寄存器的使用、参数传递。</li>
-<li>不同数据结构，如结构体、联合、数组的分配和访问方式。</li>
-<li>指针的使用。</li>
+<li>AR ：创建静态库，插入、删除、列出和提取成员；</li>
+<li>STRINGS ：列出目标文件中所有可以打印的字符串；</li>
+<li>STRIP ：从目标文件中删除符号表信息；</li>
+<li>NM ：列出目标文件符号表中定义的符号；</li>
+<li>SIZE ：列出目标文件中节的名字和大小；</li>
+<li>READELF ：显示一个目标文件的完整结构，包括ELF 头中编码的所有信息。</li>
+<li>OBJDUMP ：显示目标文件的所有信息，最有用的功能是反汇编.text节中的二进制指令。</li>
+<li>LDD ：列出可执行文件在运行时需要的共享库</li>
 </ul>
-<h1 id="intel"><a name="user-content-intel" href="#intel" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Intel 系列处理器的发展</h1>
-<p>8086-&gt;80286-&gt;i386(体系结构扩展到32bit)-&gt;i486-&gt;Pentium系列<br />
-Intel指令集称为IA32指令集。 x86系列<br />
-<strong>NOTICE</strong>:gcc编译器是可以选择优化级别的。例如 gcc -O2 是告诉编译器使用第二级编译优化。</p>
-<h1 id="gcc"><a name="user-content-gcc" href="#gcc" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>gcc编译选项</h1>
-<table>
-<thead>
-<tr>
-<th>编译选项</th>
-<th>-E</th>
-<th>-S</th>
-<th>-c</th>
-<th>-o</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>gcc</td>
-<td>预编译插入宏替换</td>
-<td>生成汇编文件 .s</td>
-<td>编译生成目标文件 二进制格式 .o</td>
-<td>链接生成可执行文件</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>中间代码分析：<br />
-objdump -d -xxx.o 可以反汇编二进制文件以汇编语言形式展示。 objdump是目标文件阅读器。(<strong>GDB有很多特性可以用来分析机器级别程序</strong>)<br />
-关于大端小端：大端高byte在前位于 <strong>低地址</strong> ；小端高byte在后位于 <strong>高地址</strong>。</p>
-</blockquote>
-<h1 id="c"><a name="user-content-c" href="#c" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>C语言循环语句的汇编级实现</h1>
-<ul>
-<li>do {&hellip;} while()<br />
-<div class="codehilite"><pre>    <span class="nl">loop</span><span class="p">:</span> 
-         <span class="n">body</span><span class="o">-</span><span class="n">statement</span><span class="p">;</span>
-         <span class="n">t</span><span class="o">=</span><span class="n">test</span><span class="o">-</span><span class="n">expr</span><span class="p">;</span>
-         <span class="k">if</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-            <span class="k">goto</span> <span class="n">loop</span><span class="p">;</span>
-</pre></div>
-</li>
-<li>while(){&hellip;}<br />
-<div class="codehilite"><pre>    <span class="n">t</span><span class="o">=</span><span class="n">test</span><span class="o">-</span><span class="n">expr</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">t</span><span class="p">)</span>
-        <span class="k">goto</span> <span class="n">done</span><span class="p">;</span>
-<span class="o">-----------------------------</span>
-    <span class="nl">loop</span><span class="p">:</span> 
-        <span class="n">body</span><span class="o">-</span><span class="n">statement</span><span class="p">;</span>
-        <span class="n">t</span><span class="o">=</span><span class="n">test</span><span class="o">-</span><span class="n">expr</span><span class="p">;</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-            <span class="k">goto</span> <span class="n">loop</span><span class="p">;</span> 
-</pre></div>
-</li>
-<li>for(;;;){&hellip;}<br />
-<div class="codehilite"><pre>    <span class="n">init</span><span class="o">-</span><span class="n">expr</span><span class="p">;</span>
-<span class="o">-----------------------------</span>
-    <span class="n">t</span><span class="o">=</span><span class="n">test</span><span class="o">-</span><span class="n">expr</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">t</span><span class="p">)</span>
-        <span class="k">goto</span> <span class="n">done</span><span class="p">;</span>
-<span class="o">-----------------------------</span>
-    <span class="nl">loop</span><span class="p">:</span> 
-        <span class="n">body</span><span class="o">-</span><span class="n">statement</span><span class="p">;</span>
-        <span class="n">t</span><span class="o">=</span><span class="n">test</span><span class="o">-</span><span class="n">expr</span><span class="p">;</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-            <span class="k">goto</span> <span class="n">loop</span><span class="p">;</span> 
-</pre></div>
-<br />
-汇编级别的最终实现其实说明了，for do&hellip;while 和while循环的本质还是一样的，只不过实现时候循环之前的条件判断部分有不同。</li>
-<li>switch(x) 开关语句，其实通过实现一个跳转表来根据不同的条件x来实现跳转。</li>
-</ul>
-<h1 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>过程调用</h1>
-<blockquote>
-<ul>
-<li>
-<p>一个过程调用包括将数据(参数和返回值)和控制 从代码的一部分传递到另一部分。<br />
-另外在进入过程时为过程的局部变量分配空间，并在退出时释放这些空间。</p>
-</li>
-<li>
-<p><em>大多数机器包括IA32</em>，只提供简单转移控制 <strong>到过程</strong>和 <strong>从过程中转移出</strong>的指令。</p>
-</li>
-<li>
-<p><strong>数据传递、局部变量的分配和释放通过操纵程序栈来实现</strong>。</p>
-</li>
-<li>
-<p><strong>栈指针esp和帧指针ebp</strong>,当程序执行过程中栈指针是可以移动的，因此大多数信息的访问都是相对于帧指针的。 </p>
-</li>
-<li>过程调用的栈结构</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>stack</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>..................<em>此处一下为调用者的帧</em></td>
-</tr>
-<tr>
-<td>param n</td>
-</tr>
-<tr>
-<td>param n-1</td>
-</tr>
-<tr>
-<td>....</td>
-</tr>
-<tr>
-<td>param 1</td>
-</tr>
-<tr>
-<td>返回值地址</td>
-</tr>
-<tr>
-<td><strong>被保存的%ebp</strong> <em>此处以下为被调用者的帧</em></td>
-</tr>
-<tr>
-<td>被保存的寄存器，本地变量，临时变量</td>
-</tr>
-<tr>
-<td>参数构造区域</td>
-</tr>
-<tr>
-<td><strong>此处是栈顶</strong>  【esp指向栈顶】</td>
-</tr>
-</tbody>
-</table>
-</blockquote>
-<h1 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>嵌套数据类型</h1>
-<h2 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>数组</h2>
-<p>程序需要根据数据的下标来计算元素所在的地址。按照行优先的来计算。</p>
-<h2 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>异类数据结构</h2>
-<p>Union 和 Struct</p>
-<h2 id="alignment"><a name="user-content-alignment" href="#alignment" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>关于对齐 alignment</h2>
-<h2 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>关于指针</h2>
-<blockquote>
-<ul>
-<li>int (<em>arr)[13] 指向int[13]的数组指针 ; int </em>arr[13] 内容为int指针的，指针数组。</li>
-<li>void (*f) (void *)f为函数指针; void *f(void*) f为返回值为void* 型的函数。</li>
-</ul>
-</blockquote></article></body></html>
+<p>与.o文件稍有不同：<br />
+ELF头中字段e_entry给出执行程序时第一条指令的地址，而在可重定位文件中，此字段为0<br />
+多一个.init节，用于定义_init函数，该函数用来进行可执行目标文件开始执行时的初始化工作<br />
+少两.rel节（无需重定位）<br />
+多一个程序头表，也称段头表（segment header table），是一个结构数组</p>
+<p><meta http-equiv="refresh" content="1"></p></article></body></html>
