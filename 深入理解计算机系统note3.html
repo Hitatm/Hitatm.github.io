@@ -1103,4 +1103,42 @@ MathJax.Hub.Config({
   showProcessingMessages: false
 });
 </script>
-<title>深入理解计算机系统note3</title></head><body><article class="markdown-body"><p>linkerandloader</p></article></body></html>
+<title>深入理解计算机系统note3</title></head><body><article class="markdown-body"><p><strong>目录</strong></p>
+<div class="toc">
+<ul>
+<li><a href="#_1">第七章、链接过程</a><ul>
+<li><a href="#_2">常用工具</a></li>
+<li><a href="#_3">目标文件格式</a><ul>
+<li><a href="#1">1 可重定位目标文件格式</a></li>
+<li><a href="#2">2 可执行目标文件格式</a></li>
+<li><a href="#3">3 可执行目标文件的存储器映像</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第七章、链接过程</h1>
+<h2 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>常用工具</h2>
+<ul>
+<li>ar ：创建静态库，插入、删除、列出和提取成员；</li>
+<li>strings ：列出目标文件中所有可以打印的字符串；</li>
+<li>strip ：从目标文件中删除符号表信息；</li>
+<li>nm：列出目标文件符号表中定义的符号；</li>
+<li>size ：列出目标文件中节的名字和大小；</li>
+<li>readelf ：显示一个目标文件的完整结构，包括ELF 头中编码的所有信息。</li>
+<li>objdump ：显示目标文件的所有信息，最有用的功能是反汇编.text节中的二进制指令。</li>
+<li>ldd ：列出可执行文件在运行时需要的共享库</li>
+</ul>
+<h2 id="_3"><a href="/files/linkerandloader/">目标文件格式</a></h2>
+<h3 id="1"><a name="user-content-1" href="#1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1 可重定位目标文件格式</h3>
+<p><img alt="tupian" src="/pic/kechongdingwei.png" /> <img alt="tupian" src="/pic/kechongdingwei2.png" />  </p>
+<h3 id="2"><a name="user-content-2" href="#2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2 可执行目标文件格式</h3>
+<p><img alt="tupian" src="/pic/kezhixingmubiaowenjian.png" /></p>
+<h3 id="3"><a name="user-content-3" href="#3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3 可执行目标文件的存储器映像</h3>
+<p><img alt="tupian" src="/pic/elf.png" /></p>
+<p>与.o文件稍有不同：<br />
+ELF头中字段e_entry给出执行程序时第一条指令的地址，而在可重定位文件中，此字段为0<br />
+多一个.init节，用于定义_init函数，该函数用来进行可执行目标文件开始执行时的初始化工作<br />
+少两.rel节（无需重定位）<br />
+多一个程序头表，也称段头表（segment header table），是一个结构数组</p></article></body></html>
