@@ -1103,12 +1103,12 @@ MathJax.Hub.Config({
   showProcessingMessages: false
 });
 </script>
-<title>深入理解计算机系统第5章</title></head><body><article class="markdown-body"><p><strong>目录</strong></p>
+<title>深入理解计算机系统note2</title></head><body><article class="markdown-body"><p><strong>目录</strong></p>
 <div class="toc">
 <ul>
 <li><a href="#_1">第五章、优化程序性能(略读)</a></li>
 <li><a href="#_2">第六章、优化程序性能(略读)</a></li>
-<li><a href="#_3">第七章、</a></li>
+<li><a href="#io">第十一章、系统级I/O</a></li>
 </ul>
 </div>
 <h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第五章、优化程序性能(略读)</h1>
@@ -1123,8 +1123,12 @@ MathJax.Hub.Config({
     <span class="o">-------------------------</span>
 </pre></div>
 </li>
-<li>消除循环中的低效率，每次循环中没有改变的语句要放在循环之外  </li>
-<li>消除不必要的存储器引用，例如 *dest+=5;<blockquote>
+<li>
+<p>消除循环中的低效率，每次循环中没有改变的语句要放在循环之外  </p>
+</li>
+<li>
+<p>消除不必要的存储器引用，例如 *dest+=5;</p>
+<blockquote>
 <p><strong>关于编译器优化问题可以参考Muchnick的著作，这貌似是传说中最全面的</strong><br />
 <strong>也可以参考Wadleigh 和 Crawford的关于软件优化的著作。</strong></p>
 </blockquote>
@@ -1133,20 +1137,41 @@ MathJax.Hub.Config({
 <hr />
 <h1 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第六章、优化程序性能(略读)</h1>
 <p>RAM Random-access memory 随机访问存储器 分为两类动态的和静态的。 SRAM6晶体管速度快抗干扰能力强，无需刷新，DRMA抗干扰不行，易失需要定时刷新。</p>
-<h1 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第七章、</h1>
+<hr />
+<h1 id="io"><a name="user-content-io" href="#io" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第十一章、系统级I/O</h1>
+<p>底层IO包括 read write open close等接口<br />
+然后RIO    使用底层系统级IO 构建的适合网络读写的IO</p>
 <ul>
-<li>AR ：创建静态库，插入、删除、列出和提取成员；</li>
-<li>STRINGS ：列出目标文件中所有可以打印的字符串；</li>
-<li>STRIP ：从目标文件中删除符号表信息；</li>
-<li>NM ：列出目标文件符号表中定义的符号；</li>
-<li>SIZE ：列出目标文件中节的名字和大小；</li>
-<li>READELF ：显示一个目标文件的完整结构，包括ELF 头中编码的所有信息。</li>
-<li>OBJDUMP ：显示目标文件的所有信息，最有用的功能是反汇编.text节中的二进制指令。</li>
-<li>LDD ：列出可执行文件在运行时需要的共享库</li>
+<li>文件分为普通文件、目录文件、套接字<ul>
+<li>目录文件其实就是包含其他文件信息的文件</li>
+<li>套接字文件 用来通过网络与其他进程通信的文件。</li>
 </ul>
-<p>与.o文件稍有不同：<br />
-ELF头中字段e_entry给出执行程序时第一条指令的地址，而在可重定位文件中，此字段为0<br />
-多一个.init节，用于定义_init函数，该函数用来进行可执行目标文件开始执行时的初始化工作<br />
-少两.rel节（无需重定位）<br />
-多一个程序头表，也称段头表（segment header table），是一个结构数组</p>
+</li>
+<li>文件描述符：每个文件都有一个独立的文件描述符表，表项是由进程打开的文件描述符索引。每个打开的描述符表项指向文件表中的一个表项。</li>
+<li>文件表：<strong>所有进程共享</strong>文件表，即打开文件的集合，文件表表项中包括文件的位置，<strong>引用计数</strong>(即当指向该文件的描述符个数)，以及<strong>一个执行V-node表中对应项的指针</strong>。<br />
+关闭一个文件内核不会删除该文件表表项，直到文件表的引用计算数为0，才会删除。</li>
+<li>v-node 表：和文件表一样，所有进程共享。<a href="https://github.com/torvalds/linux/tree/master/fs">(linux文件系统)</a><br />
+<div class="codehilite"><pre><span class="k">typedef</span> <span class="k">struct</span> <span class="n">vnode</span> <span class="p">{</span>
+  <span class="kt">kmutex_t</span>        <span class="n">v_lock</span><span class="p">;</span>                 <span class="cm">/* protects vnode fields */</span>
+  <span class="n">u_short</span>         <span class="n">v_flag</span><span class="p">;</span>                 <span class="cm">/* vnode flags (see below) */</span>
+  <span class="n">u_long</span>          <span class="n">v_count</span><span class="p">;</span>                <span class="cm">/* reference count */</span>
+  <span class="k">struct</span> <span class="n">vfs</span>      <span class="o">*</span><span class="n">v_vfsmountedhere</span><span class="p">;</span>      <span class="cm">/* ptr to vfs mounted here */</span>
+  <span class="k">struct</span> <span class="n">vnodeops</span> <span class="o">*</span><span class="n">v_op</span><span class="p">;</span>                  <span class="cm">/* vnode operations */</span>
+  <span class="k">struct</span> <span class="n">vfs</span>      <span class="o">*</span><span class="n">v_vfsp</span><span class="p">;</span>                <span class="cm">/* ptr to containing VFS */</span>
+  <span class="k">struct</span> <span class="n">stdata</span>   <span class="o">*</span><span class="n">v_stream</span><span class="p">;</span>              <span class="cm">/* associated stream */</span>
+  <span class="k">struct</span> <span class="n">page</span>     <span class="o">*</span><span class="n">v_pages</span><span class="p">;</span>               <span class="cm">/* vnode pages list */</span>
+  <span class="k">enum</span> <span class="n">vtype</span>      <span class="n">v_type</span><span class="p">;</span>                 <span class="cm">/* vnode type */</span>
+  <span class="kt">dev_t</span>           <span class="n">v_rdev</span><span class="p">;</span>                 <span class="cm">/* device (VCHR, VBLK) */</span>
+  <span class="kt">caddr_t</span>         <span class="n">v_data</span><span class="p">;</span>                 <span class="cm">/* private data for fs */</span>
+  <span class="k">struct</span> <span class="n">filock</span>   <span class="o">*</span><span class="n">v_filocks</span><span class="p">;</span>             <span class="cm">/* ptr to filock list */</span>
+  <span class="kt">kcondvar_t</span>      <span class="n">v_cv</span><span class="p">;</span>                   <span class="cm">/* synchronize locking */</span>
+<span class="p">}</span> <span class="kt">vnode_t</span><span class="p">;</span>
+</pre></div>
+</li>
+</ul>
+<blockquote>
+<p><a href="http://everything2.com/title/vnode">vnode</a> (“virtual node”)仅在文件打开的时候，才出现的；<br />
+而inode定位文件在磁盘的位置，它的信息本身是存储在磁盘等上的，当打开文件的时候从磁盘上读入内存。<a href="http://blog.csdn.net/jnu_simba/article/details/8806654"><em>from here</em></a><br />
+<a href="http://img.my.csdn.net/uploads/201304/15/1366041111_3148.png">图示如下</a> <img alt="tupina" src="///G://Programming_language_learning/algorithm/Hitatm.github.io/pic/filedescriptor.png" /></p>
+</blockquote>
 <p><meta http-equiv="refresh" content="1"></p></article></body></html>

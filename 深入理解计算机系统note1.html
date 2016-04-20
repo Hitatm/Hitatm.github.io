@@ -1103,7 +1103,7 @@ MathJax.Hub.Config({
   showProcessingMessages: false
 });
 </script>
-<title>深入理解计算机系统前三章</title></head><body><article class="markdown-body"><p><strong>目录</strong></p>
+<title>深入理解计算机系统note1</title></head><body><article class="markdown-body"><p><strong>目录</strong></p>
 <div class="toc">
 <ul>
 <li><a href="#_1">第一章、深入理解计算机系统</a><ul>
@@ -1213,10 +1213,13 @@ MathJax.Hub.Config({
 <li>然后来段代码 使用“^”的奇技淫巧<br />
 <div class="codehilite"><pre>        <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">x</span> <span class="p">,</span><span class="kt">int</span> <span class="o">*</span><span class="n">y</span> <span class="p">)</span>
         <span class="p">{</span>
+            <span class="c1">//notice!! if ADDRESS of x is same with y ;^ will  set the value to 0;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">!=</span><span class="n">y</span><span class="p">)</span>
+            <span class="p">{</span>
             <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">^</span> <span class="o">*</span><span class="n">y</span>  <span class="p">;</span><span class="c1">// x=x^y</span>
             <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">^</span> <span class="o">*</span><span class="n">y</span>  <span class="p">;</span><span class="c1">// y=x^y^y       =&gt; x</span>
-            <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">^</span> <span class="o">*</span><span class="n">y</span>  <span class="p">;</span>
-            <span class="c1">// x=x^y ^ x^y^y =&gt; y</span>
+            <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span> <span class="o">^</span> <span class="o">*</span><span class="n">y</span>  <span class="p">;</span><span class="c1">// x=x^y ^ x^y^y =&gt; y</span>
+            <span class="p">}</span>
         <span class="p">}</span>  
 </pre></div>
 </li>
