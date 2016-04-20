@@ -15,14 +15,14 @@
 * objdump ：显示目标文件的所有信息，最有用的功能是反汇编.text节中的二进制指令。
 * ldd ：列出可执行文件在运行时需要的共享库
 
-## [目标文件格式](./files/linkerandloader/)
+## [目标文件格式](/files/linkerandloader/)
 
 ### 1 可重定位目标文件格式
-   ![tupian](./pic/kechongdingwei.png) ![tupian](./pic/kechongdingwei2.png)  
+   ![tupian](/pic/kechongdingwei.png) ![tupian](/pic/kechongdingwei2.png)  
 ### 2 可执行目标文件格式
-   ![tupian](./pic/kezhixingmubiaowenjian.png)
+   ![tupian](/pic/kezhixingmubiaowenjian.png)
 ### 3 可执行目标文件的存储器映像
-   ![tupian](./pic/elf.png)
+   ![tupian](/pic/elf.png)
 
 
 与.o文件稍有不同：
