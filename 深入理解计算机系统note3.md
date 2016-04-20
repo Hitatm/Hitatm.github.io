@@ -15,7 +15,7 @@
 * objdump ：显示目标文件的所有信息，最有用的功能是反汇编.text节中的二进制指令。
 * ldd ：列出可执行文件在运行时需要的共享库
 
-## [目标文件格式](/files/linkerandloader)
+## [目标文件格式](https://github.com/Hitatm/Hitatm.github.io/tree/master/files/linkerandloader)
 
 ### 1 可重定位目标文件格式
    ![tupian](/pic/kechongdingwei.png) ![tupian](/pic/kechongdingwei2.png)  
