@@ -1,14 +1,15 @@
 **【存档文件】**
-签名-作为一个菜逼，慢慢来
+签名-菜逼，慢慢来
 
 [TOC] 
 
 #NOTE
 
 ##一些笔记
-> [深入理解计算机系统note(1)](https://hitatm.github.io/深入理解计算机系统note1.html)
-> [深入理解计算机系统笔记note(2)](https://hitatm.github.io/深入理解计算机系统note2.html)
-> [深入理解计算机系统笔记note(3)](https://hitatm.github.io/深入理解计算机系统note3.html)
+> [深入理解计算机系统 1 ](https://hitatm.github.io/深入理解计算机系统note1.html)
+> [深入理解计算机系统笔记 2 ](https://hitatm.github.io/深入理解计算机系统note2.html)
+> [深入理解计算机系统笔记 3 ](https://hitatm.github.io/深入理解计算机系统note3.html)
+> [深入理解计算机系统笔记 4](https://hitatm.github.io/深入理解计算机系统note4.html)
 ## 读书
 四月
 
@@ -27,3 +28,7 @@
 - [ ] 《Rework》
 - [ ] 《清醒思考的艺术》
 - [ ] 《黑客与画家》
+
+
+## 好玩的
+Sikuli

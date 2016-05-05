@@ -1,4 +1,7 @@
-[TOC]
+目录 
+> [TOC]
+
+> Linux 基本命令复习
 # 快捷键
 
 |按键|  作用|
@@ -77,16 +80,107 @@
 |find ~ -newer ~/Code|  列出用户家目录下比Code文件夹新的文件|
 
 # 文件打包与压缩
-zip
+###zip
 -r参数表示递归打包包含子目录的全部内容
 -q参数表示为安静模式，即不向屏幕输出信息
 -o，表示输出文件，需在其后紧跟打包输出文件名
 -e 加密选项。
 -[n] n可以是1~9表示的是压缩级别。
 
+###unzip 解压文件
+-O GBK 指定编码类型
+-l选项表示 不解压 只看里边有什么文件
 
+### rar 
+**注意：rar 的命令参数没有-，如果加上会报错**
+a 添加
+d 删除
+l list content of archive
+e 直接加压到当前目录
+x 指定解压目录
 
+### tar
+在 Linux 上面更常用的是tar工具，tar 原本只是一个打包工具，只是同时还是实现了对 7z，gzip，xz，bzip2 等工具的支持，这些压缩工具本身只能实现对文件或目录（单独压缩目录中的文件）的压缩，没有实现对文件的打包压缩。
+-j 对 bzip2的支持
+-z 对gizp的支持
+-X 过滤条件
+-x extract files from an archive
+-t list the contents  of archive
 
+#文件系统操作与磁盘操作
+* -h  
+* df  ：display file system 展示文件系统信息
+* du  ：Summarize disk usage of each FILE，recursively for directories。
+  * du -d 1 表示只查看2级目录的 磁盘使用量。
+* dd 命令
+  dd if=xx  of=xx bs=1M count=256
+* mkfs 格式化磁盘为某种文件系统
+* mount 命令 mount \[options\] \[source\] \[directory\]
+  mount \[-o [操作选项]\] \[-t 文件系统类型\] \[-w|--rw|--ro\] \[文件系统源\] \[挂载点\]
+* umount 
+* fdisk 操作磁盘分区表 进行磁盘分区
+
+#命令执行顺序 与 管道
+### 执行顺序
+* 可以用 ;;; 分割命令在一行中来依次执行多条linux 命令；
+* 也可以用&& || 分别表示指令执行的逻辑 &&表示前边执行成功才会执行后边的 
+
+### 管道
+* ‘|’
+
+### 其他命令
+* cut 命令，打印每一行的某一字段 print selected parts of lines from each file to standard output
+    *  例如 cut /etc/passwd -d ':' -f 1,6 每行内容的分隔符是： 返回其中第1个第6个域的内容。
+    * cut /etc/passwd -c -5 显示每行中前5个字符。
+    * cut /etc/passwd -c 2-5 显示每行中前2-5个字符。
+
+* grep 命令在文本中或者stdin中查找匹配字符串
+    * -r -n -I  递归搜索子目录文件、打印匹配行号 、忽略二进制文件。
+    * -G 正则表达式  -P 支持perl正则表达式
+
+* wc print newline,word,byte counts for each file and total line if more than one file is specified.
+    * -c print byte count 
+    * -l  lines 
+    * -L print lenght of the longest line
+    * -w print word  count
+    * 例如 ls -dl  /etc/\*/ | wc -l  ; 列出etc目录下的 文件夹个数，使用了管道和wc命令
+
+* sort sort lines of files
+    * -r reverse 
+    * -t 分隔符 
+    * -k  key 排序关键字 sort via a key 
+    * -n 按照数字序来排 默认是字典序
+
+* history 查看过去使用过的命令
+
+* uniq 去重复 只去除 相同且连续的行的重复
+
+> 那么问题来了: 如何查看过去使用的过的命令 不能重复?
+>   answer ： history | cut -c 8- | cut -d ' ' -f 1 | sort |uniq 
+> 首先列出使用过的命令| 删除每行的行号| 只保留每行的第一个数据域|排序|去重
+http://image2.wangchao.net.cn/pic/1368526533709.jpg
+# 数据流重定向
+
+## 标准输入、输出、标准错误
+|文件描述符| 设备文件 | 说明|
+|-------|-------|-----------|
+|0|/dev/stdin  |标准输入|
+|1 |/dev/stdout |标准输出|
+|2 |/dev/stderr |标准错误|
+
+* 数据流输出重定向 标准输出和标准错误是不同的 如果需要把 ** 标准错误重定向到标准输出 ** 使用命令 ** 2>&1**
+例如 sdf > sss.t  2>&1 这时候会发现 sss.t文件中 有错误提示 command not found :sdf;
+* tee 将标准输入中 copy数据到 输入文件 和标准输出中 
+  * 例如 echo “sdfsdf” | tee hello 将 sdfsdf 输出到 hello中 同时在标准输出中显示 “sdfsdf”
+  
+##永久重定向
+* exec命令实现永久重定向 
+  *  ** exec 1> file ** 那么以后每个命令的标准输出 都会定向到文件file中。
+  *  exit 退出 永久重定向
+
+## 特殊的
+> **/dev/null，或称空设备，是一个特殊的设备文件，它通常被用于丢弃不需要的输出流，或作为用于输入流的空文件，这些操作通常由重定向完成。读取它则会立即得到一个EOF。**
+> 例如 在命令后追加 “1>/dev/null 2>&1” 会使得你的命令执行什么也得不到
 
 
 
@@ -95,13 +189,21 @@ printerbanner
 banner
 toilet
 figlet
+asiccview 
+aafire 
+cmatrix
 
 
 # 小tips
 1. vimdiff工具 比较文件的异同
 2. 直接添加环境变量 echo "PATH=$PATH:/home/shiyanlou/mybin" >> .bashrc
 **>>表示将标准输出以追加的方式重定向到一个文件中，注>是以覆盖的方式重定向到一个文件中，使用的时候一定要注意分辨。在指定文件不存在的情况下都会创建新的文件**
+3. echo $? 输出的数字是上一条命令的返回值
 
+<!-- ![美女图片呦](http://image2.wangchao.net.cn/pic/1368526533709.jpg) -->
+
+
+```c
  ________________________________________
 / There is no distinctly native American \
 | criminal class except Congress.        |
@@ -128,3 +230,4 @@ figlet
                   ^^^^^\uuu/^^\uuu/^^^^\^\^\^\^\^\^\^\
                      ___) >____) >___   ^\_\_\_\_\_\_\)
                     ^^^//\\_^^//\\_^       ^(\_\_\_\)
+```
