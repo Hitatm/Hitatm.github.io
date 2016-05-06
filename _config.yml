@@ -13,14 +13,14 @@ author:
   linkedin: https://www.linkedin.com/pub/anya-lin/81/91/232
 
 # 站点信息
-title: 林安亚的博客
-description: My personal blog
-url: http://painterlin.com
+title: gxnの小站
+description: personal blog
+url: http://hitatm.github.io
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-gavatar: /public/img/deer3.png
-favicon: /public/img/deer3.png
+gavatar: /public/img/sky.png
+favicon: /public/img/sky.png
 
 # google analytics 设置
 ga:
