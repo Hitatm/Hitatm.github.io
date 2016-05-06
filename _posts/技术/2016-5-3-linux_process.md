@@ -16,7 +16,7 @@ description: 没什么
 ------------------------------------------------------------------------------
 
 [引用自](http://blog.csdn.net/zhangzhebjut/article/details/39034327)
-``` c
+``` C
  PPID   PID  PGID   SID TTY      TPGID STAT   UID   TIME COMMAND
     0     1     1     1 ?           -1 Ss       0   0:01 /sbin/init
     0     2     0     0 ?           -1 S        0   0:00 [kthreadd]
