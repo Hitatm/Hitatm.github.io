@@ -6,9 +6,9 @@
 #NOTE
 
 ##一些笔记
-> [深入理解计算机系统 1 ](https://hitatm.github.io/深入理解计算机系统note1.html)
-> [深入理解计算机系统笔记 2 ](https://hitatm.github.io/深入理解计算机系统note2.html)
-> [深入理解计算机系统笔记 3 ](https://hitatm.github.io/深入理解计算机系统note3.html)
+> [深入理解计算机系统 1](https://hitatm.github.io/深入理解计算机系统note1.html)
+> [深入理解计算机系统笔记 2](https://hitatm.github.io/深入理解计算机系统note2.html)
+> [深入理解计算机系统笔记 3](https://hitatm.github.io/深入理解计算机系统note3.html)
 > [深入理解计算机系统笔记 4](https://hitatm.github.io/深入理解计算机系统note4.html)
 ## 读书
 四月
