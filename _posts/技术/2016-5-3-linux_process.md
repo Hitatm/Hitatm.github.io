@@ -1,3 +1,12 @@
+---
+layout: post
+title: 关于linux 进程
+category: 技术
+tags: process
+keywords: 
+description: 没什么
+---
+
 #linux进程
 ##关于进程线程的概念推荐文章
 [进程、线程及其内存模型](http://buptjz.github.io/2014/04/23/processAndThreads)
