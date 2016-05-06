@@ -21,8 +21,8 @@ url: http://nxg.com
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-gavatar: /public/img/sky.png
-favicon: /public/img/sky.png
+gavatar: /public/img/sky.jpg
+favicon: /public/img/sky.jpg
 
 # google analytics 设置
 ga:
