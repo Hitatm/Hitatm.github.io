@@ -1,3 +1,14 @@
+---
+layout: post
+title:  "note one"
+date:   2016-02-11
+category: 深入理解计算机系统
+tags: [css, html]
+
+# Author.
+author: ngx
+---
+
  **目录**
 
  [TOC]
