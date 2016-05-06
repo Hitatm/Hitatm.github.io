@@ -18,8 +18,8 @@ body, html {
 }
 /* 左侧导航栏 */
 .aside1 {
-  background-color: #1f2c39;
-  /*background-color: #1abc9c;*/
+  /*background-color: #1f2c39;*/
+  background-color: #1abc9c;
   /*background-color: #95cc85;*/
 
   /*background-image: url(/public/img/bg_grid.jpg);*/
