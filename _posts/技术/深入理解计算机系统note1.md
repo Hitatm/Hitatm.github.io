@@ -1,3 +1,11 @@
+---
+layout: post
+title: 深入理解计算机系统note1
+category: 技术
+tags: 技术笔记
+keywords: 
+description: 没什么
+---
  **目录**
 
  [TOC]
