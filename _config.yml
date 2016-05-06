@@ -18,7 +18,7 @@ author:
 # 站点信息
 title: gxnの小站
 description: personal blog
-url: http://nxg.com
+url: https://hitatm.github.io
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
@@ -26,9 +26,9 @@ gavatar: /public/img/pic.jpg
 favicon: /public/img/sky.jpg
 
 # google analytics 设置
-ga:
-  id: UA-54262064-1 
-  url: nxg.com
+# ga:
+#   id: UA-54262064-1 
+#   url: https://hitatm.github.io
 
 # disqus 设置
 disqus:
