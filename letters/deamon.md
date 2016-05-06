@@ -1,1 +1,0 @@
-![tupina](./SS.PNG)
