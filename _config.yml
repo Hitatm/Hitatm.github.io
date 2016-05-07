@@ -2,7 +2,6 @@ permalink: /:year/:month/:day/:title.html
 paginate: 10
 markdown: redcarpet
 redcarpet: 
-    # extensions: [ "tables", "highlight"]
     extensions: ["fenced_code_blocks", "tables", "highlight", "with_toc_data", "strikethrough", "underline"]
 
 # 作者信息
@@ -12,7 +11,7 @@ author:
   link: http://Hitatm.github.io
   weibo: http://weibo.com/xnguo
   github: http://github.com/lay1010
-  music: http://site.douban.com/linanya
+  music: http://site.douban.com
   linkedin: #
   # #https://www.linkedin.com/in/ganan
 
@@ -36,7 +35,7 @@ disqus:
   shortname: Anan
 
 # 主题设置，自动激活某个标签
-active: 技术
+active: 标签
 
 # 首页除了最新文章外显示分类
 cates: 
