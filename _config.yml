@@ -1,9 +1,9 @@
 permalink: /:year/:month/:day/:title.html
 paginate: 10
 
-markdown: kramdown 
-# redcarpet: 
-#     extensions: ["fenced_code_blocks", "tables", "highlight", "with_toc_data", "strikethrough", "underline"]
+markdown: redcarpet 
+redcarpet: 
+     extensions: ["fenced_code_blocks", "tables", "highlight", "with_toc_data", "strikethrough", "underline"]
 
 # 作者信息
 author: 
