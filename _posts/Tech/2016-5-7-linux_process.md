@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 关于linux 进程
-category: 技术
+category: Tech
 tags: process
 keywords: 
 description: 没什么
