@@ -9,35 +9,33 @@ description: live like movie.
 
 
 
->####For what it's worth, it's never too late, or in my case, too early, to be whoever you want to be.
+>#### For what it's worth, it's never too late, or in my case, too early, to be whoever you want to be. 
+
+>#### There's no time limit, stop whenever you want.
 
 
->####There's no time limit, stop whenever you want.
+>#### You can change or stay the same.
 
 
->####You can change or stay the same.
+>#### There's no rules to this thing.
 
 
->####There's no rules to this thing.
+>#### We can make the best or the worst of it.
 
 
->####We can make the best or the worst of it.
+>#### I hope you make the best of it.  
+
+>#### I hope you see things that startle you.  
 
 
->####I hope you make the best of it.
+>####  I hope you feel things you never felt before.
 
 
->####I hope you see things that startle you.
+>#### I hope you meet people with a different point of view.
 
 
->####I hope you feel things you never felt before.
+>#### I hope you live a life you're proud of.
 
 
->####I hope you meet people with a different point of view.
-
-
->####I hope you live a life you're proud of.
-
-
->####If you find that you are not, I hope you have the strength to start all over again.
+>#### If you find that you are not, I hope you have the strength to start all over again.
  
