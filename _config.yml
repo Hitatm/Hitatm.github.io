@@ -30,7 +30,7 @@ rss_url: /pages/atom.xml
 gavatar: /public/img/pic.jpg
 favicon: /public/img/sky.jpg
 
-google analytics 设置
+#google analytics 设置
 ga:
   id: UA-54262064-1 
   url: http://www.gxnhxf.com
