@@ -1,9 +1,13 @@
 permalink: /:year/:month/:day/:title.html
 paginate: 10
 
-markdown: redcarpet 
-redcarpet: 
-     extensions: ["fenced_code_blocks", "tables", "highlight", "with_toc_data", "strikethrough", "underline"]
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+# redcarpet 
+# redcarpet: 
+#      extensions: ["fenced_code_blocks", "tables", "highlight", "with_toc_data", "strikethrough", "underline"]
 
 # 作者信息
 author: 
@@ -17,19 +21,19 @@ author:
   # #https://www.linkedin.com/in/ganan
 
 # 站点信息
-title: gxnの小站
+title: gxnのsite
 description: personal blog
-url: https://hitatm.github.io
+url: https://gxnhxf.com
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
 gavatar: /public/img/pic.jpg
 favicon: /public/img/sky.jpg
 
-# google analytics 设置
-# ga:
-#   id: UA-54262064-1 
-#   url: https://hitatm.github.io
+google analytics 设置
+ga:
+  id: UA-54262064-1 
+  url: http://www.gxnhxf.com
 
 # disqus 设置
 disqus:
@@ -42,7 +46,7 @@ active: 技术
 cates: 
   # - Optimization
   # - LaTeX
-
+port: 5001
 
 gems: [jekyll-paginate]
 
