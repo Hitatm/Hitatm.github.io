@@ -2,7 +2,7 @@
 layout: post
 title: Learning
 category: 生活
-tags: Learning Something
+tags: 学习技巧
 keywords: 
 description: live for now.
 ---
