@@ -40,5 +40,6 @@ description: git tools.
 >变量删除
 
 可以使用unset命令删除一个环境变量
+
 ## 环境变量生效
 source command 

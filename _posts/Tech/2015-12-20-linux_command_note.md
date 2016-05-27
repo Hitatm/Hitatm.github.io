@@ -2,7 +2,7 @@
 layout: post
 title: Linux 基本命令
 category: Tech
-tags: Liunx commands
+tags: Liunx_commands
 keywords: 
 description: linux.
 ---
