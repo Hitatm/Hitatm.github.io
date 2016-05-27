@@ -8,7 +8,8 @@ description: git tools.
 ---
 
 # shell基础
-1. shell 环境变量
+
+## shell 环境变量
 
 |命令 | 说明|
 |--------|----------|
@@ -18,12 +19,12 @@ description: git tools.
 
 
 
-2. shell 变量 declare 声明一个变量
+## shell 变量 declare 声明一个变量
 
 * $符号用于表示引用一个变量的值
 
 
-3. 变量修改&删除
+## 变量修改&删除
 
 >变量的修改有以下几种方式：
 
@@ -39,5 +40,5 @@ description: git tools.
 >变量删除
 
 可以使用unset命令删除一个环境变量
-4. 环境变量生效
+## 环境变量生效
 source command 
