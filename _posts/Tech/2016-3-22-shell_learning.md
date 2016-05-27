@@ -2,7 +2,7 @@
 layout: post
 title: Shell 基础
 category: Tech
-tags: Git
+tags: Shell
 keywords: 
 description: git tools.
 ---
