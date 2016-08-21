@@ -12,9 +12,9 @@ description: code
 ## 数组、向量
 
 ### 1. 有序数组删除重复的元素
-使用一个index=0记录，遍历数组当数组遇到不同的放入array\[index++\]之中。          
+使用一个index=0记录，遍历数组当数组遇到不同的放入array\[index++\]之中。 
 ### 2. 有序数组如果有重复允许重复最多k次        
-使用一个变量来记录重复的次数    
+使用一个变量来记录重复的次数
 ### 3. 查找循环移位的有序数组中的某个数（其中不存在重复的数） 要求O(logn)
 二分查找 不过查找的前后边界需要做简单处理，分为一下2种情况   
 head |—————————————mid———————>|——————>| tail   
@@ -47,9 +47,10 @@ head |———————>|————mid————————————
 ### 9. 删除一个数组中所有的有重复的元素一个不留，方法类似 (1.)
 
 ### 10. 积水问题
-[!如图](http://img.blog.csdn.net/20131204125216281?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VuZGVuMjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)  
+[!如图](http://img.blog.csdn.net/20131204125216281?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2VuZGVuMjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 方法1：找到最高的柱子，然后依次从两边到中间对每个柱子进行计算，peak记录遍历过程中的最大的，然后每次将自己与peak比较如果小于peak那么水量增加peak-自身值。  
-方法2：遍历3次数组，前两次找到当前柱子i的左右两侧的最大值和最小值，第三次计算每个柱子上的积水量大小。  
+方法2：遍历3次数组，前两次找到当前柱子i的左右两侧的最大值和最小值，第三次计算每个柱子上的积水量大小。
+
 ### 11. Rotate Image 旋转照片，二维数组表示照片，旋转90度
 方法：  
       1 2     4 1  变换方法:做沿着反对角线翻转，然后沿着中间翻转1 2    3 2    4 1  
