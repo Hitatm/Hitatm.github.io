@@ -7,7 +7,7 @@ keywords:
 description: Live for now.
 ---
 ## 技术修炼
-- [ ] apue (unix 环境高级编程) 2016/8/26
+- [ ] apue (unix 环境高级编程) 2016/8/26 2016/10/26 看完第一遍
 - [ ] unix网络编程(卷1) 
 
 apue [源码参考](http://www.apuebook.com/code3e.html)
