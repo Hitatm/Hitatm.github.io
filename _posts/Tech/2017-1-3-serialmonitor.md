@@ -2,7 +2,7 @@
 layout: post
 title: linux下串口读写 
 category: Tech
-tags: linux serial
+tags: linux_serial
 keywords: serial
 description: linux.
 ---
