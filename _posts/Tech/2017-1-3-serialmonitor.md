@@ -11,9 +11,9 @@ description: linux.
 最近由于项目需求需要从串口读取数据并做一个简单的展示，在这里上网查了一些资料，写了一下，能够完成linux下串口的监听和读入，并将读入的数据流转换为十六进制的ascii表示存储在文本文件中。
 
 ## 使用方法：
-1：通过串口转USB转接线，使得串口连接到Linux操作系统上
-2: 安装pyserial模块  [pip install pyserial]
-3：启动read.py       [python /path/of/read.py]
+1：通过串口转USB转接线，使得串口连接到Linux操作系统上   
+2: 安装pyserial模块  [pip install pyserial]    
+3：启动read.py       [python /path/of/read.py]    
 
 ## 一些说明：
 + 可以通过 [tailf /tmp/mSerial.log] 查看实时的串口读数据字节数的日志记录
