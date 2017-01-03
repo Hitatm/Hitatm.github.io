@@ -1,0 +1,673 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>Data Link Layer | gxnのsite</title>
+<meta name="author" content="Xuenan Guo">
+
+
+  <meta name="description " content="live for now.">
+
+<link rel="shortcut icon" href="/public/img/sky.jpg" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/public/css/bootstrap.css">
+<link rel="stylesheet" href="/public/css/font-awesome.css">
+<link rel="stylesheet" href="/public/js/prettify/prettify.css">
+<link rel="stylesheet" href="/public/css/base.css">
+<link href="/pages/atom.xml" rel="alternate" title="gxnのsite" type="application/atom+xml">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 col-sm-13 col-xs-13 aside visible-md visible-lg">
+  <div class="row">
+    <div class="col-md-2 col-xs-2 aside1">
+      <br>
+      <a class="pjaxlink" href="/"><img src="/public/img/pic.png" class="img-ronuded avatar" style="border-width:0px; border-color:#000"></a>
+      <br><br><br><br>
+      <ul class="nav nav-pills nav-stacked">
+             <!-- 这里是aside1的读书、生活、科研、技术、绘画-->
+         <li><a href="#Tech" data-toggle="tab">Tech</a></li>
+             <!-- 这里是aside1的读书、生活、科研、技术、绘画-->
+         <li><a href="#电影" data-toggle="tab">电影</a></li>
+             <!-- 这里是aside1的读书、生活、科研、技术、绘画-->
+         <li><a href="#读书" data-toggle="tab">读书</a></li>
+             <!-- 这里是aside1的读书、生活、科研、技术、绘画-->
+         <li><a href="#生活" data-toggle="tab">生活</a></li>
+        
+        <li><a href="#tags" data-toggle="tab">标签</a></li>  
+        <li><a class="pjaxlink" href="/pages/archive.html">归档</a></li>
+        <li><a class="pjaxlink" href="/pages/about.html">关于</a></li>  
+        <!-- <li><a href="#tags" data-toggle="tab"><i class="fa fa-tags fa-lg"></i></a></li>
+        <li><a class="pjaxlink" href="/pages/archive.html"><i class="fa fa-archive fa-lg"></i></a></li>
+        <li><a class="pjaxlink" href="/pages/about.html"><i class="fa fa-user fa-lg"></i></a></li>
+        这是原来现实汉字的代码，我改为了图标 -->
+      </ul>
+      <div class="aside1_bottom">
+        <table class="table table-condensed">
+          <tr>
+            <td><a href="/pages/atom.xml" target="_blank"><i class="fa fa-rss fa-lg" style="color:#170202;"></i></a></td>
+            <td><a href="mailto:gxnhit@gmail.com"><i class="fa fa-envelope-o fa-lg" style="color:#170202;"></i></a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-10 col-xs-10 aside2">
+      <div class="row">
+        <div class="tab-content"> 
+           
+            <div class="tab-pane" id="Tech">
+              <div class="list-group">
+                <!--<h2 class="center">Tech</h2>-->     <!--原来aside2上面的大标题-->
+                
+                  <a href="/2016/08/21/longestIncreaseSequence.html" class="list-group-item-lay pjaxlink">最长递增子序列</a>
+                
+                  <a href="/2016/08/18/code.html" class="list-group-item-lay pjaxlink">little code</a>
+                
+                  <a href="/2016/08/12/leetcode_summary.html" class="list-group-item-lay pjaxlink">leetcode 题目总结</a>
+                
+                  <a href="/2016/07/15/findjob.html" class="list-group-item-lay pjaxlink">找工作开始了</a>
+                
+                  <a href="/2016/05/31/Cpp_1.html" class="list-group-item-lay pjaxlink">cpp 复习1</a>
+                
+                  <a href="/2016/05/30/vimnote.html" class="list-group-item-lay pjaxlink">vim usage</a>
+                
+                  <a href="/2016/05/20/RPL.html" class="list-group-item-lay pjaxlink">RPL note</a>
+                
+                  <a href="/2016/05/17/network3.html" class="list-group-item-lay pjaxlink">Network Layer</a>
+                
+                  <a href="/2016/05/13/network2.html" class="list-group-item-lay pjaxlink">Data Link Layer</a>
+                
+                  <a href="/2016/05/12/network1.html" class="list-group-item-lay pjaxlink">Computer Network Overview</a>
+                
+                  <a href="/2016/05/07/linux_process.html" class="list-group-item-lay pjaxlink">关于linux 进程</a>
+                
+                  <a href="/2016/05/06/cpp_note4.html" class="list-group-item-lay pjaxlink">深入理解计算机系统4</a>
+                
+                  <a href="/2016/04/20/cpp_note3.html" class="list-group-item-lay pjaxlink">深入理解计算机系统3</a>
+                
+                  <a href="/2016/04/18/cpp_note2.html" class="list-group-item-lay pjaxlink">深入理解计算机系统2</a>
+                
+                  <a href="/2016/04/15/cppnote1.html" class="list-group-item-lay pjaxlink">深入理解计算机系统1</a>
+                
+                  <a href="/2016/03/22/shell_learning.html" class="list-group-item-lay pjaxlink">Shell 基础</a>
+                
+                  <a href="/2015/12/20/linux_command_note.html" class="list-group-item-lay pjaxlink">Linux 基本命令</a>
+                
+                  <a href="/2015/10/09/git_note.html" class="list-group-item-lay pjaxlink">Git command note</a>
+                
+              </div>
+            </div>
+           
+            <div class="tab-pane" id="电影">
+              <div class="list-group">
+                <!--<h2 class="center">电影</h2>-->     <!--原来aside2上面的大标题-->
+                
+                  <a href="/2016/05/07/the_curious_case_of_benjamin_button.html" class="list-group-item-lay pjaxlink">电影 《返老还童》</a>
+                
+                  <a href="/2016/04/20/Fipped.html" class="list-group-item-lay pjaxlink">电影 《怦然心动》</a>
+                
+              </div>
+            </div>
+           
+            <div class="tab-pane" id="读书">
+              <div class="list-group">
+                <!--<h2 class="center">读书</h2>-->     <!--原来aside2上面的大标题-->
+                
+                  <a href="/2016/10/18/keep_forword.html" class="list-group-item-lay pjaxlink">怎样学习</a>
+                
+                  <a href="/2016/10/10/Reading_SanTi.html" class="list-group-item-lay pjaxlink">读完《三体》</a>
+                
+                  <a href="/2016/05/06/readingbooks.html" class="list-group-item-lay pjaxlink">书单和阅读记录</a>
+                
+              </div>
+            </div>
+           
+            <div class="tab-pane" id="生活">
+              <div class="list-group">
+                <!--<h2 class="center">生活</h2>-->     <!--原来aside2上面的大标题-->
+                
+                  <a href="/2016/05/09/helloworld.html" class="list-group-item-lay pjaxlink">Learning</a>
+                
+              </div>
+            </div>
+                
+          <div class="tab-pane" id="tags">
+            <div class="panel-group" id="accordion">
+              <!--<h2 class="center">标签</h2>-->
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#Git">Git</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="Git" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/10/09/git_note.html' class="list-group-item pjaxlink">
+                        Git command note
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#Liunx_commands">Liunx_commands</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="Liunx_commands" class="panel-collapse collapse">
+                    
+                      <a  href='/2015/12/20/linux_command_note.html' class="list-group-item pjaxlink">
+                        Linux 基本命令
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#Shell">Shell</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="Shell" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/03/22/shell_learning.html' class="list-group-item pjaxlink">
+                        Shell 基础
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#深入理解计算机系统">深入理解计算机系统</a>
+                      <span class="badge pull-right">4</span>
+                    </h4>
+                  </div>
+                  <div id="深入理解计算机系统" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/05/06/cpp_note4.html' class="list-group-item pjaxlink">
+                        深入理解计算机系统4
+                      </a>
+                    
+                      <a  href='/2016/04/20/cpp_note3.html' class="list-group-item pjaxlink">
+                        深入理解计算机系统3
+                      </a>
+                    
+                      <a  href='/2016/04/18/cpp_note2.html' class="list-group-item pjaxlink">
+                        深入理解计算机系统2
+                      </a>
+                    
+                      <a  href='/2016/04/15/cppnote1.html' class="list-group-item pjaxlink">
+                        深入理解计算机系统1
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#影评">影评</a>
+                      <span class="badge pull-right">2</span>
+                    </h4>
+                  </div>
+                  <div id="影评" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/05/07/the_curious_case_of_benjamin_button.html' class="list-group-item pjaxlink">
+                        电影 《返老还童》
+                      </a>
+                    
+                      <a  href='/2016/04/20/Fipped.html' class="list-group-item pjaxlink">
+                        电影 《怦然心动》
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#reading">reading</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="reading" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/05/06/readingbooks.html' class="list-group-item pjaxlink">
+                        书单和阅读记录
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#process:进程">process:进程</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="process:进程" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/05/07/linux_process.html' class="list-group-item pjaxlink">
+                        关于linux 进程
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#学习技巧">学习技巧</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="学习技巧" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/05/09/helloworld.html' class="list-group-item pjaxlink">
+                        Learning
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#Network">Network</a>
+                      <span class="badge pull-right">3</span>
+                    </h4>
+                  </div>
+                  <div id="Network" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/05/17/network3.html' class="list-group-item pjaxlink">
+                        Network Layer
+                      </a>
+                    
+                      <a  href='/2016/05/13/network2.html' class="list-group-item pjaxlink">
+                        Data Link Layer
+                      </a>
+                    
+                      <a  href='/2016/05/12/network1.html' class="list-group-item pjaxlink">
+                        Computer Network Overview
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#LLN">LLN</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="LLN" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/05/20/RPL.html' class="list-group-item pjaxlink">
+                        RPL note
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#vim">vim</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="vim" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/05/30/vimnote.html' class="list-group-item pjaxlink">
+                        vim usage
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#cpp">cpp</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="cpp" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/05/31/Cpp_1.html' class="list-group-item pjaxlink">
+                        cpp 复习1
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#algorithm">algorithm</a>
+                      <span class="badge pull-right">3</span>
+                    </h4>
+                  </div>
+                  <div id="algorithm" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/08/21/longestIncreaseSequence.html' class="list-group-item pjaxlink">
+                        最长递增子序列
+                      </a>
+                    
+                      <a  href='/2016/08/18/code.html' class="list-group-item pjaxlink">
+                        little code
+                      </a>
+                    
+                      <a  href='/2016/07/15/findjob.html' class="list-group-item pjaxlink">
+                        找工作开始了
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#leetcode">leetcode</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="leetcode" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/08/12/leetcode_summary.html' class="list-group-item pjaxlink">
+                        leetcode 题目总结
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#三体">三体</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="三体" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/10/10/Reading_SanTi.html' class="list-group-item pjaxlink">
+                        读完《三体》
+                      </a>
+                    
+                  </div>
+                </div>
+               
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#learning">learning</a>
+                      <span class="badge pull-right">1</span>
+                    </h4>
+                  </div>
+                  <div id="learning" class="panel-collapse collapse">
+                    
+                      <a  href='/2016/10/18/keep_forword.html' class="list-group-item pjaxlink">
+                        怎样学习
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="col-md-13 col-lg-13 col-sm-13 col-xs-13 aside3">
+        <div id="container">
+          <div id="pjax">
+            <div class="row">
+  <div class="col-md-13 aside3-title">
+    <br>
+    <h2 id="#identifier">Data Link Layer</h2>
+    2016年05月13日
+  </div>
+  <div class="col-md-13 aside3-content">
+    <hr>
+    <div id="content">
+      <h1 id="section">数据链路层</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>数据链路层</th>
+      <th>功能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LLC 数据链路控制层</td>
+      <td>LLC：主要功能 成帧、流量控制、差错控制</td>
+    </tr>
+    <tr>
+      <td>MAC 介质访问控制层</td>
+      <td>MAC：负责多路访问的控制</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>流量控制：是一系列的程序用来控制发送向接收方发送数据的数量。 <br />
+差错控制：是基于自动重复请求ARQ，检测到差错即需要按照一定规则重传数据帧。  <br />
+常见的流量控制：最基本的停等协议、GBN goback N ARQ、选择性重复的ARQ <br />
+捎带技术；其中前三个数据都是单方向的由Sender-&gt;receiver;捎带技术是双向的数据传输。</p>
+
+<h2 id="section-1">流量控制</h2>
+<p>最简单的停等协议： 发数据、等ACK 、ACK序列号为0101交错的序列。       </p>
+
+<p>GBN协议：m位的序列号，发送窗口小于等于2^m-1 序列号为mod(2^m);发送窗口不能大于2^m因为可能会导致发送2^m个帧后，Receiver 返回ACK丢失，Sender要回退滑动窗口N个，重发又从窗口的第一个数据帧开始向reveiver发送数据帧此时的序列号为0，但是这对于接收者其实是一个需要丢弃的副本，但是接收者需要接收序列号为0的数据，所以识别错误。    </p>
+
+<p>选择性重复ARQ: 接收窗口为2^(m-1),接收时候不是按顺序来接收，接收方也存在一个接收窗口，接收窗口和发送窗口小于2^(m-1),因为如果大于2^m，那么接收方和发送方窗口之和将会跨越2^m序列号范围，会导致错误。
+选择性ARQ的接收窗口的逻辑比GBN复杂了些：S：1 2 3 4 5 ；R： 2 3 4 5 ;R没有收到1，当收到2时会发NAK1要求重发1 收到3的时候就不会再继续发NAK1，也就是不用每次重复的发送没收到数据帧的NAK,为了减少网络拥堵。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>GBN</th>
+      <th>选择性重复ARQ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>窗口最大2^m-1</td>
+      <td>最大窗口2^(m-1)</td>
+    </tr>
+    <tr>
+      <td>定时器只需要一个，只需记录最先发送的数据帧收ACK是否超时</td>
+      <td>定时器需要多个，因为接收窗口数据帧有多个</td>
+    </tr>
+    <tr>
+      <td>不发NAK超时自动重传</td>
+      <td>如果没有收到需要发NAK</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>捎带技术 :
+双向数据传输，数据不止是S-&gt;R R-&gt;S  ACK可以插入到数据帧中 </p>
+
+<h2 id="section-2">多路复用</h2>
+<p>常见多路复用技术:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>随机访问</th>
+      <th>受控访问</th>
+      <th>通道协议</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ALOHA/CSMA/CSMA-CD/CSMA-CA</td>
+      <td>预约、轮询、令牌环</td>
+      <td>FDMA、TDMA、CDMA</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="aloha">ALOHA</h3>
+<p>ALOHA 有数据即发送，发送中遇到冲突即回退等待，等待方式：二进制指数回退。
+纯ALOHA：脆弱时间为2*T (T:为一帧平均传输时间), 即在在发送之后2T时间之内数据可能会产生冲突。
+时隙ALOHA: 脆弱时间为T，每个发送时间为T。</p>
+
+<h3 id="csma">CSMA</h3>
+<p>载波侦听多路访问, 发送之前需要侦听一下链路中是否有数据。</p>
+
+<h3 id="csma-cd">CSMA-CD</h3>
+<p>需要要求帧的最小长度限制。 <br />
+Tf为帧传输时间，Tp为帧的最大传播时延，其中需要Tf&gt;2Tp; <br />
+因为 从S-&gt;R 的数据帧传播的时间为Tp,由于传播时延，R未检测到数据
+即发送数据此时当S接收到R发送的数据时候经历时间为2Tp。 <br />
+需要保证经过2*Tp时间此时S还在发送此帧的数据尚未结束，因为，如果在此帧数据的最后一位前发送如果没有检测到冲突，那么一旦整个帧发完了，同时冲突了，会导致S无法保存副本，而此时R收到为已经被冲突污染的帧。   </p>
+
+<h3 id="csma-ca">CSMA-CA</h3>
+<p>带冲突检测的载波侦听多路访问，广泛应用于无线网络。  <br />
+流程：连续侦听-&gt; 帧间空间-&gt; 竞争窗口-&gt; 发送帧 -&gt;超时。</p>
+
+<h2 id="section-3">通道协议</h2>
+<p>FDMA、TDMA、CDMA 三种通道协议，移动电话系统比较常用。</p>
+
+<h2 id="mac">标准以太网MAC层帧结构</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>前导符preamble</th>
+      <th>SFD起始帧定界符</th>
+      <th>目的地址</th>
+      <th>源地址</th>
+      <th>长度或类型</th>
+      <th>数据字段</th>
+      <th>CRC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7byte 56bit的01序列其实是物理层添加的</td>
+      <td>1byte</td>
+      <td>6byte</td>
+      <td>6byte</td>
+      <td>2byte</td>
+      <td>46byte~1500byte</td>
+      <td>4 byte</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="section-4">关于帧长度限制</h3>
+<ol>
+  <li>以太网对帧的最大最小长度有严格的限定，最小64byte是为了满足CSMA-CD正确运行的需要：  <br />
+64 byte: 46byte + 6 byte + 6 byte+2 byte+ 4 byte=46+18byte  </li>
+</ol>
+
+<p>时隙=往返时间+发送干扰序列所需时间   <br />
+在10Mbps的宽带上512 bits 发送时间t=51.2us。  <br />
+最大网络长度=2 * 10^8 * (51.2 * 10 ^(-6) /2 )=5120m。   <br />
+考虑中继器以及接收延时，理论值需要乘以48%，最大长度为2500m       </p>
+
+<ol>
+  <li>最大帧长度为：1500+18=1518byte。 <br />
+设定最大值是为了：
+    <ul>
+      <li>一个站点独占共享介质</li>
+      <li>早期存储器昂贵，最大长度限制有助于减少缓冲器大小。</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="section-5">以太网的发展</h2>
+
+<h3 id="section-6">网桥-&gt;交换网</h3>
+<p>以太网发展的第一步是将局域网使用网桥分割，提高带宽、分割冲突域。
+随后从桥接LAN扩展到交换以太网。  <br />
+在千兆以太网的全双工模式中不存在冲突的问题，电缆线长度取决于电缆线中信号的衰减程度。</p>
+
+<p>IEEE 802.3定义了第一代10Mbps 以太网的访问方法。   <br />
+     802.3u快速以太网数据传输速率100Mbps 全双工取消CSMA-CD  <br />
+     802.3z快速以太网数据传输速率1000Mbps 全双工取消CSMA-CD  </p>
+
+<h3 id="section-7">千兆以太网拓扑</h3>
+<p><img src="/public/img/pic/1000mbpswangluo.png" alt="tupo" /></p>
+
+<h2 id="wifi">wifi发展</h2>
+
+<h2 id="section-8">其他</h2>
+<p>Project 802 是用来被设计规范制造LAN以及不同LAN之间互联的标准。</p>
+
+    </div>
+    <hr>
+    <div id="disqus_thread">
+  <button type="button" name="Anan" class="btn btn-default show-commend">	
+  	<i class="fa fa-comment-o fa-lg" style="color: #16a095;"></i>     <!-- 修改显示评论按钮图标-->
+  </button>
+</div>
+
+  </div>
+  <!-- 目录 -->
+  <div id="content_table" style="position:fixed;right:20px;top:120px;display:none;">
+    <div class="panel panel-success">
+      <div class="panel-body" id="nav"></div>
+    </div>
+  </div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="position:fixed;right:15px;top:62px;">
+  <button id="content_btn" class="btn btn-primary" style="width:43px; height:34px;">
+    <i class="fa fa-lg fa-plus"></i>
+  </button>
+</div>
+<div style="position:fixed;right:15px;top:20px;">
+  <button id="nav_btn" class="btn btn-primary">
+    <i class="fa fa-lg fa-navicon"></i>
+  </button>
+</div>
+<script type="text/javascript" src="/public/js/jquery.js"></script>
+<script type="text/javascript" src="/public/js/bootstrap.js"></script>
+<script src="/public/js/jquery.pjax.js"></script>
+<script src="/public/js/prettify/prettify.js"></script>
+<script src="/public/js/base.js"></script>
+<!--
+<script src="/public/js/jquery.scrollUp.js"></script>
+-->
+<script>
+    $('a[href="#Tech"]').tab('show');
+</script>
+
+
+<!--button是右上方导航和显示目录的按钮-->
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-54262064-1', 'http://www.gxnhxf.com');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
